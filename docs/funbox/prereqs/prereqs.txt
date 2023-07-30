@@ -1,0 +1,70 @@
+Prerequisites
+
+Env
+1. Erlang/OTP (https://github.com/erlang/otp):
+$ sudo pacman -S erlang
+----------------------------------------
+2. Rebar3 build tool (https://github.com/erlang/rebar3):
+$ yay -S rebar3, rebar3-zsh
+----------------------------------------
+3. Redis db (https://redis.io):
+$ sudo pacman -S redis
+----------------------------------------
+4. Erlang LS (https://github.com/erlang-ls/erlang_ls):
+$ yay -S erlang_ls
+4.1 Add erlang_ls to $PATH variable.
+Include the following line in .zshrc for Z shell
+export PATH="/usr/bin/erlang_ls:$PATH"
+
+4.2 Installing Coc with vim-plug
+For vim-plug users with nodejs >= 10.12 installed, installing the plugin is just:
+
+" Use release branch (Recommended)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+To make the plugin aware of erlang_ls however, it needs configuration.
+
+4.3 Coc plugin configuration
+Coc is configured through coc-settings.json, which can be opened in vim
+by issuing the command:
+
+:CocConfig
+
+If erlang_ls is present in your $PATH variable then the following config should suffice:
+
+{
+  "languageserver": {
+    "erlang": {
+      "command": "erlang_ls",
+      "filetypes": ["erlang"]
+    }
+  }
+}
+----------------------------------------
+5. Erlang plugins for Vim
+Plug 'vim-erlang/vim-erlang-omnicomplete' " autocompletion
+Plug 'vim-erlang/vim-erlang-compiler' " syntax checking and compiler
+Plug 'vim-erlang/vim-erlang-runtime' " indentation, syntax and ftplugin scripts
+Plug 'vim-erlang/vim-erlang-tags' " creates a tags file (from Erlang source files)
+
+----------------------------------------
+6. OTP tags:
+$ git clone https://github.com/erlang/otp
+$ cd /path/to/otp
+$ vim
+:ErlangTags
+$ vim .vimrc
+:set tags^=/path/to/otp/tags
+
+Proj
+Create a new prime project using rebar3:
+$ rebar3 new app prime
+
+Deps
+Erlang Redis clients:
+(https://github.com/wooga/eredis,
+https://github.com/Nordix/eredis)
+Add eredis client as dependency to the rebar.config file
+{deps, [{eredis, ".*", {git, "https://github.com/wooga/eredis.git",
+                        {branch, "master"}}}
+]}
