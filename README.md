@@ -1,4 +1,4 @@
-![](https://gitflic.ru/project/0mega3/prime/blob/raw?file=primelogo.png)
+![](https://gitflic.ru/project/0mega3/prime/blob/raw?file=docs%2Flogo%2Fprimelogo.png)
 
 Prime
 =====
@@ -87,7 +87,7 @@ and `.erl` files
     $ rebar3 compile
 ```
 
-- If needed, build release tarball
+- If needed, build release tarball<br>
 Tarball target directory `_build/prod/rel/prime/prime-0.1.0.tar.gz`
 
 ```console
