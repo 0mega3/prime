@@ -1,7 +1,6 @@
-![](https://gitflic.ru/project/0mega3/prime/blob/raw?file=docs%2Flogo%2Fprimelogo.png)
+![logo](https://gitflic.ru/project/0mega3/prime/blob/raw?file=doc/logo/primelogo.png)
 
-Prime
-=====
+# Prime
 
 An OTP application.
 The prime server is implemented as a gen_server.
@@ -16,9 +15,9 @@ In addition, PRNs are generated at a frequency of 3000 numbers per second
 (by default) and are queued in Redis (List data structure).
 
 ```math
-    F(x) = x, 2 =< x =< N
-    where
-        N is the upper limit of PRNs
+F(x) = x, 2 =< x =< N
+where
+    N is the upper limit of PRNs
 ```
 
 - As soon as the generator is started, the filter starts taking PRNs
@@ -32,125 +31,120 @@ Parameters:
 - QueueKey is the queue key used by the generator in Redis;
 - ResultSetKey is the set key used by the filter in Redis.
 
-Prerequisites
--------------
+# Prerequisites
 
-The installation of prerequisites for [ArchLinux](https://archlinux.org/) is shown.
+The installation of prerequisites for [ArchLinux](https://archlinux.org/) is
+shown.
 
 - [Erlang/OTP](https://github.com/erlang/otp):
 
-```console
-    $ sudo pacman -S erlang
-```
+    ```console
+    sudo pacman -S erlang
+    ```
 
 - [Rebar3 build tool](https://github.com/erlang/rebar3):
 
-```console
-    $ yay -S rebar3
-```
+    ```console
+    yay -S rebar3
+    ```
 
 - [Redis db](https://github.com/redis/redis):
 
-```console
-    $ sudo pacman -S redis
-```
+    ```console
+    sudo pacman -S redis
+    ```
 
 ---
 
-Build
------
+## Build
 
 - If needed, remove the `_build` directory to remove all compilation
 artifacts
 
-```console
-    $ cd /target/prime
-    $ rm -rf _build
-```
+    ```console
+    cd /target/prime
+    rm -rf _build
+    ```
 
 - Update the package index
 
-```console
-    $ rebar3 update
-```
+    ```console
+    rebar3 update
+    ```
 
 - Upgrade dependencies
 
-```console
-    $ rebar3 upgrade --all
-```
+    ```console
+    rebar3 upgrade --all
+    ```
 
 - Compile the needed dependencies and the project’s apps’ `.app.src`
 and `.erl` files
 
-```console
-    $ rebar3 compile
-```
+    ```console
+    rebar3 compile
+    ```
 
-- If needed, build release tarball<br>
-Tarball target directory `_build/prod/rel/prime/prime-0.1.0.tar.gz`
+- If needed, build release tarball. Tarball target directory
+`_build/prod/rel/prime/prime-0.1.0.tar.gz`
 
-```console
-    $ rebar3 as prod tar
-```
+    ```console
+    rebar3 as prod tar
+    ```
 
 ---
 
-Usage
------
+## Usage
 
 - Start Redis in the background by running
 
-```console
-    $ redis-server &
-```
+    ```console
+    redis-server &
+    ```
 
 - Start an interactive shell and use Prime API
 
-  For development use only
+    For development use only
 
-```console
-    $ rebar3 shell
-```
+    ```console
+    rebar3 shell
+    ```
 
-  For production use
+    For production use
 
-```console
-    $ mkdir prime
-    $ mv prime-0.1.0.tar.gz prime/
-    $ cd prime
-    $ tar -zxvf prime-0.1.0.tar.gz
-    $ bin/prime console
-```
+    ```console
+    mkdir prime
+    mv prime-0.1.0.tar.gz prime/
+    cd prime
+    tar -zxvf prime-0.1.0.tar.gz
+    bin/prime console
+    ```
 
-Prime API:
+### Prime API
 
 ```erlang
-    {ok, Prime} = prime:start_link().
-    prime:generate(Prime).
-    prime:cancel(Prime).
-    prime:get_res(Prime).
-    prime:stop(Prime).
+{ok, Prime} = prime:start_link().
+prime:generate(Prime).
+prime:cancel(Prime).
+prime:get_res(Prime).
+prime:stop(Prime).
 ```
 
-Testing
--------
+# Testing
 
 The Redis Server should be started.
 
 Run EUnit tests on project apps
 
 ```console
-    $ rebar3 eunit
+rebar3 eunit
 ```
 
-License
--------
+## License
 
 Prime was created by Denis Khorkin. It is licensed under the terms
 of the BSD-3-Clause license.
 
-Credits
--------
+## Credits
 
 - Denis Khorkin
