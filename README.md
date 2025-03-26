@@ -14,11 +14,11 @@ numbers(PRNs) according to the uniform distribution function.
 In addition, PRNs are generated at a frequency of 3000 numbers per second
 (by default) and are queued in Redis (List data structure).
 
-```math
-F(x) = x, 2 =< x =< N
-where
-    N is the upper limit of PRNs
-```
+    ```math
+    F(x) = x, 2 =< x =< N
+    where
+        N is the upper limit of PRNs
+    ```
 
 - As soon as the generator is started, the filter starts taking PRNs
 from the queue, checking that numbers is prime and adding prime numbers
