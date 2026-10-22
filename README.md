@@ -15,9 +15,10 @@ In addition, PRNs are generated at a frequency of 3000 numbers per second
 (by default) and are queued in Redis (List data structure).
 
     ```math
-    F(x) = x, 2 =< x =< N
-    where
-        N is the upper limit of PRNs
+    \begin{aligned}
+    & F(x) = x, \quad 2 \le x \le N \\
+    & \text{where } N \text{ is the upper limit of PRNs.}
+    \end{aligned}
     ```
 
 - As soon as the generator is started, the filter starts taking PRNs
