@@ -1,4 +1,4 @@
-![logo](https://gitflic.ru/project/0mega3/prime/blob/raw?file=doc/logo/primelogo.png)
+![cover](assets/primecover.png)
 
 # Prime
 
@@ -142,8 +142,7 @@ rebar3 eunit
 
 ## License
 
-Prime was created by Denis Khorkin. It is licensed under the terms
-of the BSD-3-Clause license.
+[BSD-3-Clause](LICENSE)
 
 ## Credits
 
